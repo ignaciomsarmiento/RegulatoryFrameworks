@@ -57,10 +57,8 @@ _RegulatoryFrameworks/
 ├── server.r              # Main server logic
 ├── global_aux/           # Data loading, constants, formatters
 ├── tabs/                 # UI and server modules per tab
-├── landing_labor_costs/  # Landing page module
 ├── data/                 # Source Excel files and processed data
-├── www/                  # CSS, JS, images, fonts
-└── documents/            # Reference documents
+└── www/                  # CSS, JS, images, fonts
 ```
 
 ## Feedback
