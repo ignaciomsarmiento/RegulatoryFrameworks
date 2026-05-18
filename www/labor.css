@@ -1,0 +1,713 @@
+/* ==========================================
+   LABOR MODULE — SHARED STYLES
+   ========================================== */
+
+/* Numbered filter label in the left panel
+   ("1. Categories", "2. Explore by", "3. Minimum Wage", "4. Country"). */
+.labor-filter-label {
+  font-weight: bold;
+  color: #b0b0b0;
+  font-size: 14px;
+}
+
+/* Category pill buttons in the non-salary filters panel.
+   Used by the ALL / Bonuses / Social / Occupational / Payroll buttons. */
+.labor-category-button {
+  background-color: #e6f4ff;
+  color: #0f3b66;
+  border: 1px solid #0f3b66;
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-weight: 600;
+}
+
+/* Heterogeneity section title (sits above the partial table). */
+.section-title {
+  background: transparent;
+  color: #0f3b66;
+  font-weight: 600;
+  margin: 8px 0 12px 0;
+  text-align: left;
+  font-size: 20px;
+  font-family: 'National Park', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* "Excel"-style table (raw HTML from the regulations sheet).
+   Typography, borders, and alternating rows. */
+.excel-table table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: 0 auto 12px auto;
+  font-family: 'National Park', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 10px;
+  line-height: 1.25;
+}
+.excel-table td, .excel-table th {
+  border: 1px solid #000;
+  padding: 6px 8px;
+  vertical-align: middle;
+  font-size: 10px !important;
+  font-family: 'National Park', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+.excel-table td *, .excel-table th * {
+  font-size: 10px !important;
+  font-family: 'National Park', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  line-height: 1.25 !important;
+}
+.excel-table font {
+  font-size: 10px !important;
+  font-family: 'National Park', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+.excel-table tr:nth-child(even) td {
+  background-color: #fff;
+}
+.excel-table tr:first-child td {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  text-align: center;
+}
+.country-hidden { display: none !important; }
+
+/* Reactable wrapper with vertical scroll and sticky header. */
+.tbl-scroll-wrap {
+  width: 100%;
+  max-height: 520px;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+.tbl-scroll-wrap .rt-thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #fff;
+}
+.tbl-scroll-wrap .rt-tr-filters {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #fff;
+}
+
+/* Reactable styling for the "All Bonuses" table.
+   Headers centered, cells left-aligned, first column centered + bold. */
+.all-bonuses-table .rt-th,
+.all-bonuses-table .rt-th .rt-resizable-header-content {
+  justify-content: center !important;
+  text-align: center !important;
+}
+.all-bonuses-table .rt-td {
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+.all-bonuses-table .rt-td:first-child {
+  justify-content: center !important;
+  text-align: center !important;
+  font-weight: 600 !important;
+}
+
+.pill-button.active {
+  background-color: #00C1FF !important;
+  color: white !important;
+}
+
+.pill-button:hover {
+  opacity: 0.85;
+}
+
+.pill-button {
+  font-size: 11px;
+  width: auto;
+  align-self: flex-start;
+  display: inline-flex;
+}
+
+.left-panel .pill-button {
+  width: auto;
+  align-self: flex-start;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.subcomponent-btn {
+  font-size: 9px;
+}
+
+.component-btn.active {
+  background-color: #00C1FF !important;
+  color: white !important;
+}
+
+.component-btn:hover {
+  opacity: 0.85;
+}
+
+.component-btn {
+  font-size: 9px;
+}
+
+.plot-spinner .shiny-bound-output.recalculating {
+  opacity: 0.4;
+}
+
+/* ── Chart loading overlay + message ──
+   Applied to the PARENT wrapper via :has() so the ::before/::after
+   render above the plotly SVG (child pseudo-elements get hidden behind it).
+   ──────────────────────────────────────────────── */
+.plot-spinner {
+  position: relative;
+}
+
+.plot-spinner:has(.recalculating)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
+  z-index: 999;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.plot-spinner:has(.recalculating)::after {
+  content: 'Loading chart, please wait...';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e3a5f;
+  font-family: 'National Park', sans-serif;
+  background: #ffffff;
+  padding: 16px 32px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 34, 68, 0.15);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .plot-scroll {
+    overflow-x: auto;
+  }
+
+  .plot-scroll .html-widget {
+    min-width: 900px;
+  }
+}
+
+.labor-explore-by {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.labor-explore-label {
+  color: #b0b0b0;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding-top: 12px;
+  min-width: 120px;
+}
+
+.labor-choice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.labor-choice-row {
+  display: block;
+  width: 100%;
+  background: #ffffff !important;
+  border: 1px solid #e0e6ef !important;
+  border-radius: 14px !important;
+  padding: 12px 18px 14px !important;
+  text-align: left !important;
+  box-shadow: 0 6px 14px rgba(15, 59, 102, 0.08);
+  color: #1e3a5f;
+  white-space: normal;
+}
+
+.labor-choice-row > .action-label {
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr);
+  column-gap: 16px;
+  row-gap: 4px;
+  align-items: start;
+  width: 100%;
+  min-width: 0;
+  white-space: normal;
+}
+
+.labor-choice-row:hover {
+  border-color: #c9d7e6 !important;
+}
+
+.labor-choice-row.active {
+  border-color: #00b8d4 !important;
+  box-shadow: 0 10px 22px rgba(0, 184, 212, 0.16);
+}
+
+.labor-choice-dot {
+  grid-column: 1;
+  grid-row: 1;
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-top: 4px;
+  border-radius: 50%;
+  border: 2px solid #c1cdda;
+  background: #ffffff;
+  flex: 0 0 auto;
+}
+
+.labor-choice-row.active .labor-choice-dot {
+  border-color: #00b8d4;
+  background: #00b8d4;
+  box-shadow: inset 0 0 0 3px #ffffff;
+}
+
+.labor-choice-title {
+  grid-column: 2;
+  grid-row: 1;
+  display: block;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  font-size: 14px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #1e3a5f;
+  min-width: 0;
+  white-space: normal;
+}
+
+.labor-choice-subtitle {
+  grid-column: 2;
+  grid-row: 2;
+  display: block;
+  max-width: 980px;
+  color: #52677a;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: normal;
+}
+
+.labor-choice-row.active .labor-choice-title {
+  color: #00b8d4;
+}
+
+.labor-view-selector + .row {
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .labor-explore-by {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .labor-explore-label {
+    padding-top: 0;
+  }
+
+  .labor-choice-row {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .labor-choice-row > .action-label {
+    grid-template-columns: 10px minmax(0, 1fr);
+    column-gap: 12px;
+    row-gap: 5px;
+  }
+
+  .labor-choice-title {
+    white-space: normal;
+  }
+
+  .labor-choice-subtitle {
+    font-size: 10.5px;
+    line-height: 1.32;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .labor-explore-label {
+    font-size: 11px;
+    padding-top: 0;
+  }
+
+  .labor-choice-row {
+    padding: 10px 12px !important;
+  }
+
+  .labor-choice-row > .action-label {
+    column-gap: 10px;
+    row-gap: 4px;
+  }
+
+  .labor-choice-title {
+    font-size: 12px;
+  }
+
+  .labor-choice-subtitle {
+    font-size: 10px;
+    line-height: 1.3;
+  }
+
+}
+
+.labor-tenure-toggle {
+  background: #ffffff;
+  border: 1px solid #d7e0ec;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.labor-tenure-toggle .checkbox {
+  margin: 0;
+}
+
+.labor-tenure-toggle label {
+  font-weight: 600;
+  color: #1e3a5f;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.labor-tenure-toggle input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border: 2px solid #1e3a5f;
+  border-radius: 50%;
+  background: #ffffff;
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-grid;
+  place-items: center;
+}
+
+.labor-tenure-toggle input[type="checkbox"]:checked {
+  background: radial-gradient(circle, #1e3a5f 0 4px, #ffffff 5px);
+}
+
+
+.labor-plot-controls {
+  margin-bottom: 12px;
+}
+
+.labor-below-plot-controls {
+  margin-top: 16px;
+}
+
+.labor-table-country-selector {
+  width: 100%;
+}
+
+.labor-country-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.labor-country-title {
+  font-weight: 700;
+  color: #1e3a5f;
+  font-size: 14px;
+}
+
+.labor-country-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  justify-content: space-between;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.labor-country-button {
+  flex: 1 1 0;
+  min-width: 72px;
+  max-width: 110px;
+  height: 76px;
+  padding: 6px;
+  border-radius: 10px;
+  border: 1px solid #d7e0ec;
+  background: #ffffff;
+  color: #1e3a5f;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-family: "National Park", sans-serif;
+  font-size: 10px;
+  text-align: center;
+  line-height: 1.2;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.labor-country-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(15, 59, 102, 0.12);
+  border-color: #00c1ff;
+}
+
+.labor-country-button.active {
+  border-color: #00c1ff;
+  box-shadow: 0 0 0 2px rgba(0, 193, 255, 0.2);
+}
+
+.labor-flag {
+  width: 26px;
+  height: 18px;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.labor-country-label {
+  display: block;
+}
+
+.labor-country-hover {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 59, 102, 0.92);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.labor-country-button:hover .labor-country-hover {
+  opacity: 1;
+}
+
+.labor-reg-table {
+  width: 100%;
+  font-family: "National Park", sans-serif;
+}
+
+.labor-reg-country-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  color: #0f3b66;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.labor-reg-country-title-flag {
+  width: 26px;
+  height: 16px;
+  border-radius: 2px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(15, 59, 102, 0.16);
+}
+
+.labor-reg-accordion {
+  border-top: 2px solid #00b8d4;
+}
+
+.labor-reg-accordion-item {
+  border-bottom: 2px solid #00b8d4;
+}
+
+.labor-reg-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 4px;
+  font-size: 16px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.labor-reg-accordion-header::-webkit-details-marker {
+  display: none;
+}
+
+.labor-reg-accordion-header::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-right: 1.5px solid #888888;
+  border-bottom: 1.5px solid #888888;
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.labor-reg-accordion-item[open] > .labor-reg-accordion-header::after {
+  transform: rotate(225deg);
+}
+
+.labor-reg-accordion-title {
+  color: #222222;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.labor-reg-accordion-body {
+  padding: 2px 4px 18px 4px;
+  color: #222222;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.labor-reg-accordion-body ul,
+.labor-reg-accordion-body ol {
+  margin: 4px 0 0 0;
+  padding-left: 1.25rem;
+  list-style-position: outside;
+}
+
+.labor-reg-accordion-body li {
+  margin: 2px 0;
+  padding-left: 0.15rem;
+}
+
+.labor-reg-program-body {
+  padding-top: 0;
+}
+
+.labor-reg-program-fields {
+  border-top: 1px solid #00b8d4;
+}
+
+.labor-reg-program-field-item {
+  border-bottom: 1px solid #00b8d4;
+}
+
+.labor-reg-program-field-item:last-child {
+  border-bottom: 0;
+}
+
+.labor-reg-program-field-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.labor-reg-program-field-header::-webkit-details-marker {
+  display: none;
+}
+
+.labor-reg-program-field-header::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 1.25px solid #888888;
+  border-bottom: 1.25px solid #888888;
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+  margin-left: 14px;
+}
+
+.labor-reg-program-field-item[open] > .labor-reg-program-field-header::after {
+  transform: rotate(225deg);
+}
+
+.labor-reg-program-field-label {
+  color: #222222;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.labor-reg-program-field-value {
+  padding: 0 0 14px 0;
+}
+
+.labor-reg-neutral {
+  color: #777777;
+}
+
+/* Generic loading-message box for outputs (extracted from ui.r). */
+.output-loading-msg {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 48px 20px;
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  border-radius: 8px;
+}
+.output-loading-msg.is-visible {
+  display: flex !important;
+}
+.output-loading-msg .ld-dots {
+  display: inline-flex;
+  gap: 6px;
+}
+.output-loading-msg .ld-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #00C1FF;
+  animation: ldBounce 1.2s ease-in-out infinite;
+}
+.output-loading-msg .ld-dots span:nth-child(2) { animation-delay: 0.2s; }
+.output-loading-msg .ld-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes ldBounce {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1.2); }
+}
+.output-loading-msg .ld-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1e3a5f;
+  font-family: 'National Park', sans-serif;
+}
+
+.labor-within-note {
+  margin: 12px 0 0 0;
+  font-size: 13px;
+  color: #555;
+  font-style: italic;
+}
+.labor-within-note a {
+  color: #0f3b66;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.labor-within-note a:hover {
+  color: #00C1FF;
+}

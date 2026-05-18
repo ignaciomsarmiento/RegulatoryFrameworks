@@ -1,0 +1,10 @@
+sheet_name,table_id,output_file,description
+TL All P,tl_all_p,partials/tl_all_p.html,Pension contributions table
+TL H,tl_h,partials/tl_h.html,Health contributions table
+TL Or,tl_or,partials/tl_or.html,Occupational risk insurance table
+TL All B,tl_all_b,partials/tl_all_b.html,All bonuses and benefits table
+TL ab,tl_ab,partials/tl_ab.html,Annual bonuses
+TL pl,tl_pl,partials/tl_pl.html,Paid leave
+TL up,tl_up,partials/tl_up.html,Unemployment protection
+TL ob,tl_ob,partials/tl_ob.html,Other bonuses and benefits
+TL Pt,tl_pt,partials/tl_pt.html,Payroll taxes

@@ -1,0 +1,7 @@
+sheet_prefix,table_id,output_file,manifest_sheet_name,description,category_label
+TL Het. All - ,tl_het_all,partials/tl_het_all.html,All,Heterogeneity - All categories,All
+TL Het Bonuses - ,tl_het_bonuses,partials/tl_het_bonuses.html,Bonuses,Heterogeneity - Bonuses,Bonuses
+TL Het Pension - ,tl_het_pension,partials/tl_het_pension.html,Pension,Heterogeneity - Pension,Pension
+TL Het Health - ,tl_het_health,partials/tl_het_health.html,Health,Heterogeneity - Health,Health
+TL Het Oc Risk - ,tl_het_oc_risk,partials/tl_het_oc_risk.html,Oc Risk,Heterogeneity - Occupational Risk,Oc Risk
+TL Het Payroll Taxes - ,tl_het_payroll_taxes,partials/tl_het_payroll_taxes.html,Payroll Taxes,Heterogeneity - Payroll Taxes,Payroll Taxes
