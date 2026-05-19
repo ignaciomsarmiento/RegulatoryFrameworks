@@ -416,10 +416,21 @@
       country_sel <- ns_variables$country_sel
       country_label <- country_display_name(country_sel)
       variation_scope <- no_variation_scope_text()
-      if (cost_category == "payroll_taxes" && country_sel == "ECU") {
+      if (cost_category == "payroll_taxes" && country_sel %in% c("CHL", "ECU")) {
         message <- paste0(
           country_label,
           " is excluded since its statutory payroll taxes do not vary ",
+          variation_scope,
+          "."
+        )
+        return(build_exclusion_notice(message))
+      }
+      if (cost_category == "social" &&
+          social_subcomponent == "health" &&
+          country_sel %in% c("BRA", "ESP", "US4")) {
+        message <- paste0(
+          country_label,
+          " is excluded since its statutory health contributions do not vary ",
           variation_scope,
           "."
         )
