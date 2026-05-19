@@ -419,6 +419,13 @@
         )
         return(build_exclusion_notice(message))
       }
+      if (cost_category == "payroll_taxes" && country_sel == "ECU") {
+        message <- paste0(
+          country_label,
+          " is excluded since its statutory payroll taxes do not vary with years of employee tenure."
+        )
+        return(build_exclusion_notice(message))
+      }
 
       if (breakdown_type == "total") {
         df_src <- NULL
