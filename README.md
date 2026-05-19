@@ -61,6 +61,16 @@ _RegulatoryFrameworks/
 └── www/                  # CSS, JS, images, fonts
 ```
 
+## Documentation
+
+The `docs/` folder explains how the app is built and why. Start with the principles, then read whichever doc matches what you came for.
+
+- [`docs/principles.md`](docs/principles.md) — the engineering worldview the app is written from. Read first.
+- [`docs/architecture.md`](docs/architecture.md) — startup sequence, file map, the labor module tour, state model, assets.
+- [`docs/data-pipeline.md`](docs/data-pipeline.md) — from RDS and Excel on disk to the chart on screen.
+- [`docs/ui-and-modules.md`](docs/ui-and-modules.md) — UI shell, header nav, the filter cascade, plot/table/download outputs, JS bridges.
+- [`docs/extending.md`](docs/extending.md) — prescriptive recipes for adding a dataset, a view, a new topic, or editing a partial.
+
 ## Feedback
 
 Please report issues, suggestions, or comments directly to Ignacio.

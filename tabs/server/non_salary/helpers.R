@@ -301,14 +301,17 @@
     df |> dplyr::filter(tenure == tenure_value)
   }
 
-  exclude_health_countries <- function(df) {
+  exclude_health_countries <- function(df, exclude_zero_health_countries = FALSE) {
     if (is.null(df) || nrow(df) == 0 || !"country" %in% names(df)) {
       return(df)
     }
     mode <- safe_value(input$compare_mode, "country")
     cost_category <- safe_value(selected_cost_category(), "all")
     social_subcomponent <- safe_value(selected_social_subcomponent(), "pensions")
-    if (identical(mode, "country") && cost_category == "social" && social_subcomponent == "health") {
+    if (isTRUE(exclude_zero_health_countries) &&
+        identical(mode, "country") &&
+        cost_category == "social" &&
+        social_subcomponent == "health") {
       df <- df |> dplyr::filter(!country %in% c("US4", "BRA", "ESP"))
     }
     df

@@ -2489,6 +2489,8 @@
           )|>
           arrange(total_cost_min) |>
           mutate(country = factor(country, levels = country))
+
+        set_order_country(unique(as.character(df_wide$country)))
         
         df_mm <- df_wide |>
           tidyr::pivot_longer(
@@ -2605,6 +2607,8 @@
           )|>
           arrange(total_cost_min) |>
           mutate(country = factor(country, levels = country))
+
+        set_order_country(unique(as.character(df_wide$country)))
         
         df_mm <- df_wide |>
           tidyr::pivot_longer(
@@ -2723,6 +2727,8 @@
           )|>
           arrange(total_cost_min) |>
           mutate(country = factor(country, levels = country))
+
+        set_order_country(unique(as.character(df_wide$country)))
         
         df_mm <- df_wide |>
           tidyr::pivot_longer(
