@@ -403,6 +403,41 @@
         )
     }
 
+    no_variation_scope_text <- function() {
+      if (tenure_enabled()) {
+        return("with years of employee tenure")
+      }
+      "across minimum-wage levels"
+    }
+
+    if (!is_cross_country &&
+        length(ns_variables$country_sel) == 1 &&
+        !"All" %in% ns_variables$country_sel) {
+      country_sel <- ns_variables$country_sel
+      country_label <- country_display_name(country_sel)
+      variation_scope <- no_variation_scope_text()
+      if (cost_category == "payroll_taxes" && country_sel == "ECU") {
+        message <- paste0(
+          country_label,
+          " is excluded since its statutory payroll taxes do not vary ",
+          variation_scope,
+          "."
+        )
+        return(build_exclusion_notice(message))
+      }
+      if (cost_category == "social" &&
+          social_subcomponent == "occupational_risk" &&
+          country_sel == "PRY") {
+        message <- paste0(
+          country_label,
+          " is excluded since its statutory occupational risk contributions do not vary ",
+          variation_scope,
+          "."
+        )
+        return(build_exclusion_notice(message))
+      }
+    }
+
     if (tenure_enabled()) {
       if (length(ns_variables$country_sel) != 1 || "All" %in% ns_variables$country_sel) {
         showNotification("Please select one country.", type = "error")
@@ -416,13 +451,6 @@
         message <- paste0(
           country_label,
           " is excluded since its statutory non-salary labor costs do not vary with years of employee tenure."
-        )
-        return(build_exclusion_notice(message))
-      }
-      if (cost_category == "payroll_taxes" && country_sel == "ECU") {
-        message <- paste0(
-          country_label,
-          " is excluded since its statutory payroll taxes do not vary with years of employee tenure."
         )
         return(build_exclusion_notice(message))
       }
