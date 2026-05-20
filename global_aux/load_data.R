@@ -130,4 +130,4 @@ EXCEL_TABLES <- setNames(
 
 get_excel_table <- function(sheet_name) EXCEL_TABLES[[sheet_name]]
 
-message("Loaded 39 RDS objects + 9 Excel sheets.")
+message("Loaded 38 RDS files + 9 Excel sheets.")
